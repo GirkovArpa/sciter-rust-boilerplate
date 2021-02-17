@@ -1,11 +1,10 @@
 #![windows_subsystem="windows"]
-
 #[macro_use] extern crate sciter;
 use sciter::{ Value, HELEMENT, Element };
 use std::thread;
 struct EventHandler;
 impl EventHandler {
-	fn sum(&self, a: i32, b: i32) -> i32 { a + b }
+    fn sum(&self, a: i32, b: i32) -> i32 { a + b }
     fn sum_async(&self, x: i32, y: i32, callback: Value) -> () {
         thread::spawn(move || {
             callback
@@ -22,11 +21,11 @@ impl sciter::EventHandler for EventHandler {
         &Element::from(root)
         .call_function("set_title", &make_args!("quick maths!"));
     }
-	dispatch_script_call! (
+    dispatch_script_call! (
         fn sum(i32, i32);
         fn sum_async(i32, i32, Value);
         fn capitalize(Value);
-	);
+    );
 }
 fn main() {
     // allows CTRL+SHIFT+I to connect to inspector.exe
