@@ -11,8 +11,8 @@ impl EventHandler {
             .call(None, &make_args!(x + y), None);
         });
     }
-    fn capitalize(&self, a: Value) -> Value {
-        Value::from(a.to_string().as_str().to_uppercase())
+    fn capitalize(&self, a: String) -> String {
+        a.to_string().as_str().to_uppercase()
     }
 }
 
